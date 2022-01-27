@@ -56,6 +56,12 @@ jobs:
           outputDirectory: /tmp/lighthouse/lighthouse-${{ github.run_number }}
           verbose: true
 
+      # Upload lighthouse report
+      - uses: actions/upload-artifact@v2
+        with:
+          name: lighthouse-report
+          path: /tmp/lighthouse/lighthouse-${{ github.run_number }}
+
       # Check the audit for threshold values
       - name: Assess Lighthouse Check results
         uses: foo-software/lighthouse-check-status-action@v1.0.1
